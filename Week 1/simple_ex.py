@@ -1,3 +1,6 @@
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 # Khai bao cac kieu du lieu
 x = 10
 y = "Hello, Khanh!"
@@ -144,3 +147,42 @@ for index, value in enumerate(my_list):
 #input(): Nhận dữ liệu từ người dùng.   
 name = input("Enter your name: ")
 print("Hello, " + name)
+
+#############
+print("########################################")
+print("Quan ky danh sach hoc sinh")
+
+# Hàm xếp loại học sinh
+def xep_loai(score):
+    if score >= 8:
+        return "Giỏi"
+    elif score >= 6:
+        return "Khá"
+    elif score >= 4:
+        return "Trung bình"
+    else:
+        return "Yếu"
+
+# Khởi tạo từ điển lưu tên và điểm học sinh
+students = {}
+
+# Nhập thông tin học sinh
+while True:
+    name = input("Nhập tên học sinh (hoặc 'dừng' để kết thúc): ").encode('utf-8').decode('utf-8')
+
+    if name.lower() == 'dừng':
+        break
+    score = float(input(f"Nhập điểm của {name}: "))
+    
+    # Lưu vào từ điển
+    students[name] = score
+
+# In ra danh sách học sinh và xếp loại
+for name, score in students.items():
+    print(f"{name} - Điểm: {score}, Xếp loại: {xep_loai(score)}")
+
+# In ra học sinh có điểm >= 8 (Giỏi)
+print("\nHọc sinh giỏi:")
+for name, score in students.items():
+    if score >= 8:
+        print(f"{name}: {score}")
